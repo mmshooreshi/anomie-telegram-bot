@@ -58,23 +58,22 @@ Telegram::Bot::Client.run(token) do |bot|
         [Code: #{waitingLockId}]
         "
         codeVar_generated = "#{Digest::MD5.hexdigest("#{waitingLockId}")[0...8]}"
-        
         data_hash["#{codeVar_generated}"] = {
           "code": codeVar_generated,
           "chat_id": message.chat.id,
           "message_id": waitingLockId,
-          "shorten_text": newText.slice(0..5) ,
+          "shorten_text": newText.slice(0..5),
           "full_text":newText
         }
       else
-        reply_text = "در حال ارسال متن هستید. 
+        reply_text = "در حال ارسال متن هستید. ‍
         تعداد متن‌ها: #{messages_count}
         تعداد کلمات: #{newText.length}
         ---
         در صورتی که متن دیگری برای ارسال ندارید، بر روی /done کلیک کنید.
         "
       end
-    elsif  message.text == "/done" || singleTxt==1
+    elsif  message.text == "/done"
       reply_text = "متن نهایی ساخته شد.
       
       برای اشتراک این متن می‌توانید از این لینک استفاده نمایید:
@@ -95,7 +94,37 @@ Telegram::Bot::Client.run(token) do |bot|
       newText=""
       singleTxt=0
       waitingLockId=0
+    elsif singleTxt==1
+      messages_count=messages_count+1
+      newText = "#{message.text}"
+      reply_text = "این متن اضافه شد و متن نهایی ساخته شد. 
+      تعداد کلمات: #{newText.length}
+      ---
+     
+      برای اشتراک این متن می‌توانید از این لینک استفاده نمایید:
+      https://t.me/taarnevesht_bot?start=#{Digest::MD5.hexdigest("#{waitingLockId}")[0...8]}
 
+      پیام نهایی:
+
+      #{newText}
+
+      [Code: #{waitingLockId}]
+      "
+      codeVar_generated = "#{Digest::MD5.hexdigest("#{waitingLockId}")[0...8]}"
+      
+      data_hash["#{codeVar_generated}"] = {
+        "code": codeVar_generated,
+        "chat_id": message.chat.id,
+        "message_id": waitingLockId,
+        "shorten_text": newText.slice(0..5),
+        "full_text":newText
+      }
+      
+      File.write('./DATA.json', JSON.dump(data_hash))
+      isWaiting=0
+      newText=""
+      singleTxt=0
+      waitingLockId=0
     elsif message.text.include? "/start"
       if message.text=="/start"
         reply_text = "سلام! خوش‌اومدی #{message.from.first_name}. 🤖. روی لینکی که داخل پیامت هست کلیک کن وگرنه پیامت رو فوروارد کن." 
