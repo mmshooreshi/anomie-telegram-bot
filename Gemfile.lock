@@ -35,6 +35,7 @@ GEM
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
     ice_nine (0.11.2)
+    json (2.6.1)
     multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
@@ -63,6 +64,7 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
+  json
   sinatra
   telegram-bot-ruby
 

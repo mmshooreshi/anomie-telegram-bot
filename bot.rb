@@ -1,4 +1,9 @@
 require 'telegram/bot'
+
+require 'json'
+file = File.read('./DATA.json')
+data_hash = JSON.parse(file)
+
 require 'dotenv'
 Dotenv.load
 
@@ -7,13 +12,19 @@ puts token
 
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
+    codeVar = message.text.delete_prefix("/start ")
+    message_orig = data_hash["#{codeVar}"]
+
+    #data_hash["#{codeVar}"]['1'] = 'I, Robot'
+    #data_hash['books']['2'] = 'The Caves of Steel'
+
     puts "@#{message.from.username}: #{message.text}"
     args=message.text.delete_prefix("/start ")
 
     if  message.text.include? "/start"
       if message.text.delete_prefix("/start ") == "#{'sc-8452-XtoZOCH'}"
         reply_text = "ادامه‌ی پیام شما:
-           `منم دو هفته بود هیچی نخونده بودم‌. عملا همه‌ش تلنبار شده و متوجه شدم قراره حضوری شه و یکی از استادا می‌خواد بپرسه. برا نیفتادن‌م شده باید بخونم کم کم. چون اگه نمره‌ام خوب نشه ناراحت میشم. میگن به خودت تایم استراحت بده، و حالت خوب شد شروع کن و جواب میده انگار‌. امتحان‌ش کن. و بدون یه روزی باید بالاخره این کارو بکنی.`"
+           #{message_orig['full_text']} "
       elsif args != "/start"
         reply_text = " #{message.text.delete_prefix("/start ")} 
         متاسفانه این پیام رو پیدا نکردم :(" 
