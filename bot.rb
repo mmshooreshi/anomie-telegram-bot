@@ -88,14 +88,15 @@ Telegram::Bot::Client.run(token) do |bot|
       if message.text=="/start"
         reply_text = "سلام! خوش‌اومدی #{message.from.first_name}. 🤖. روی لینکی که داخل پیامت هست کلیک کن وگرنه پیامت رو فوروارد کن." 
       elsif "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
+        long_message_to_show =  " "
         if message_orig == {}
-          long_message_to_show =  ""
+          long_message_to_show =  " "
         elsif message_orig.key?(:"full_text")
           long_message_to_show = message_orig["full_text"]
         end
         reply_text = "پیام کامل که دنبالش بودی:
         ----
-        "+long_message_to_show
+        #{long_message_to_show}"
       else
         reply_text = " #{message.text.delete_prefix("/start ")} 
         متاسفانه این پیام رو پیدا نکردم :(" 
