@@ -89,7 +89,9 @@ Telegram::Bot::Client.run(token) do |bot|
       elsif "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
         long_message_to_show=" "
         if message_orig != {}
-          long_message_to_show = message_orig["full_text"]
+          puts message_orig 
+          puts message_orig.full_text
+          long_message_to_show = message_orig.full_text
         end
         reply_text = "پیام کامل که دنبالش بودی:
         ----
