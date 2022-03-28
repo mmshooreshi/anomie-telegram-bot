@@ -11,13 +11,13 @@ Dotenv.load
 
 token=ENV["API_TOKEN"]
 puts token
-waiting = 0
 newText=""
 messages_count=0
 
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
-    
+    isWaiting = ENV["IS_WAITING"]
+
 
     codeVar = message.text.delete_prefix("/start ")
     message_orig = data_hash["#{codeVar}"]
@@ -27,7 +27,7 @@ Telegram::Bot::Client.run(token) do |bot|
     puts "@#{message.from.username}: #{message.text}"
     args=message.text.delete_prefix("/start ")
 
-    if waiting==1 && message.text != "/start" && message.text != "/done"
+    if isWaiting==1 && message.text != "/start" && message.text != "/done"
       if message.text != "/shorten"
         messages_count=messages_count+1
         newText = newText+message.text
@@ -86,8 +86,9 @@ Telegram::Bot::Client.run(token) do |bot|
       end
     elsif message.text.include? "/shorten"
       reply_text = "الان برات متنت رو کوتاه می‌کنم. فقط برام دونه دونه پیام‌هاتو بفرست تا همه رو برات ترکیب کنم.!"
-      waiting = 1
-      r=0
+      ENV["IS_WAITING"] = 1
+      isWaiting = 1
+      messages_count=0
     else 
       if message.text.length <15
         reply_text = "پیداش نمی‌کنم که #{message.text} یعنی چی :("
