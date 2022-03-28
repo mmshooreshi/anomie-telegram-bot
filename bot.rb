@@ -66,7 +66,7 @@ Telegram::Bot::Client.run(token) do |bot|
           "shorten_text": newText.slice(0..5) ,
           "full_text":newText
         }
-      elsif message.text== "text2link"
+      elsif message.text== "/text2link"
         reply_text = "متن خود را ارسال کنید"
         singleTxt=1
       else
