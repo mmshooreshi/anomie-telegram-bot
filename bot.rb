@@ -77,14 +77,14 @@ Telegram::Bot::Client.run(token) do |bot|
       isWaiting=0
 
     elsif message.text.include? "/start"
-      if "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
+      if codeVar.length==0
+        reply_text = "سلام! خوش‌اومدی #{message.from.first_name}. 🤖. روی لینکی که داخل پیامت هست کلیک کن وگرنه پیامت رو فوروارد کن." 
+      elsif "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
         reply_text = "پیام کامل که دنبالش بودی:
-        ‍‍‍‍‍‍‍`#{message_orig['full_text']}` "
+        ‍‍‍‍‍‍‍`#{message_orig["full_text"]}` "
       elsif args != "/start"
         reply_text = " #{message.text.delete_prefix("/start ")} 
         متاسفانه این پیام رو پیدا نکردم :(" 
-      else 
-        reply_text = "سلام! خوش‌اومدی #{message.from.first_name}. 🤖. روی لینکی که داخل پیامت هست کلیک کن وگرنه پیامت رو فوروارد کن." 
       end
     elsif message.text.include? "/shorten"
       reply_text = "الان برات متنت رو کوتاه می‌کنم. فقط برام دونه دونه پیام‌هاتو بفرست تا همه رو برات ترکیب کنم.!"
