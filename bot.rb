@@ -78,7 +78,7 @@ Telegram::Bot::Client.run(token) do |bot|
       isWaiting=0
 
     elsif message.text.include? "/start"
-      if codeVar.length==0
+      if message.text=="/start"
         reply_text = "سلام! خوش‌اومدی #{message.from.first_name}. 🤖. روی لینکی که داخل پیامت هست کلیک کن وگرنه پیامت رو فوروارد کن." 
       elsif "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
         reply_text = "پیام کامل که دنبالش بودی:
