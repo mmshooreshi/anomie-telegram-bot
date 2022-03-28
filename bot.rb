@@ -83,7 +83,7 @@ Telegram::Bot::Client.run(token) do |bot|
       elsif "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
         reply_text = "پیام کامل که دنبالش بودی:
         ‍‍‍‍‍‍‍`#{message_orig["full_text"]}` "
-      elsif args != "/start"
+      else
         reply_text = " #{message.text.delete_prefix("/start ")} 
         متاسفانه این پیام رو پیدا نکردم :(" 
       end
