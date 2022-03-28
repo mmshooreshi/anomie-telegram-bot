@@ -17,7 +17,7 @@ messages_count=0
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
     isWaiting = ENV["IS_WAITING"]
-
+    puts isWaiting
 
     codeVar = message.text.delete_prefix("/start ")
     message_orig = data_hash["#{codeVar}"]
