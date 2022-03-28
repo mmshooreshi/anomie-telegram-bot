@@ -38,7 +38,7 @@ Telegram::Bot::Client.run(token) do |bot|
         ---
         در صورتی که متن دیگری برای ارسال ندارید، بر روی /done کلیک کنید.
         "
-        codeVar_generated = "#{Digest::MD5.hexdigest("#{message.id}")}"
+        codeVar_generated = "#{Digest::MD5.hexdigest("#{message.message_id}")}"
         
         data_hash["#{codeVar_generated}"] = {
           "code": "#{codeVar_generated}",
