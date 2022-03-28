@@ -20,12 +20,11 @@ Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
     # isWaiting = ENV["IS_WAITING"]
     puts isWaiting
-    
+    message_orig= {}
+
     codeVar = message.text.delete_prefix("/start ")
     if codeVar!="/start"
       message_orig = data_hash[codeVar]
-    else
-      message_orig={}
     end
     #data_hash["#{codeVar}"]['1'] = 'I, Robot'
     #data_hash['books']['2'] = 'The Caves of Steel'
@@ -88,7 +87,9 @@ Telegram::Bot::Client.run(token) do |bot|
       if message.text=="/start"
         reply_text = "سلام! خوش‌اومدی #{message.from.first_name}. 🤖. روی لینکی که داخل پیامت هست کلیک کن وگرنه پیامت رو فوروارد کن." 
       elsif "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
-        long_message_to_show = message_orig["full_text"]
+        long_message_to_show=" "
+        if message_orig != {}
+          long_message_to_show = message_orig["full_text"]
         
         reply_text = "پیام کامل که دنبالش بودی:
         ----
