@@ -75,7 +75,7 @@ Telegram::Bot::Client.run(token) do |bot|
 
 
     elsif message.text.include? "/start"
-      if message.text.delete_prefix("/start ") == "#{codeVar}"
+      if "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
         reply_text = "ادامه‌ی پیام شما:
            #{message_orig['full_text']} "
       elsif args != "/start"
