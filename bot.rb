@@ -71,7 +71,7 @@ Telegram::Bot::Client.run(token) do |bot|
       reply_text = "متن نهایی ساخته شد.
       
       برای اشتراک این متن می‌توانید از این لینک استفاده نمایید:
-      https://t.me/nextPage_Bchatbot?start=#{Digest::MD5.hexdigest("#{waitingLockId}")}
+      https://t.me/taarnevesht_bot?start=#{Digest::MD5.hexdigest("#{waitingLockId}")}
 
       تعداد متن‌ها: #{messages_count}
       تعداد کلمات: #{newText.length}
