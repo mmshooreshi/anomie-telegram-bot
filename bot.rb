@@ -4,6 +4,7 @@ Dotenv.load
 
 token=ENV["API_TOKEN"]
 puts token
+
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
     puts "@#{message.from.username}: #{message.text}"
