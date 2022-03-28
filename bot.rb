@@ -90,7 +90,7 @@ Telegram::Bot::Client.run(token) do |bot|
           long_message_to_show =  ""
         elsif message_orig.key?(:"full_text")
           long_message_to_show =  ‍‍‍‍‍‍‍message_orig["full_text"]
-
+        end
         reply_text = "پیام کامل که دنبالش بودی:
         ----
         "+long_message_to_show
