@@ -9,11 +9,38 @@ GEM
       descendants_tracker (~> 0.0.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
-    excon (0.92.1)
+    dotenv (2.7.6)
+    dry-inflector (0.2.1)
+    faraday (1.10.0)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
+      faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0)
+      faraday-multipart (~> 1.0)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.0)
+      faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
+      faraday-retry (~> 1.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
+    faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
+    faraday-multipart (1.0.3)
+      multipart-post (>= 1.2, < 3)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
+    faraday-retry (1.0.3)
     ice_nine (0.11.2)
-    telegram_bot (0.0.8)
-      excon (>= 0.30.0)
-      virtus (>= 1.0.0)
+    multipart-post (2.1.1)
+    ruby2_keywords (0.0.5)
+    telegram-bot-ruby (0.18.0)
+      dry-inflector
+      faraday (~> 1.0)
+      virtus (~> 2.0)
     thread_safe (0.3.6)
     virtus (2.0.0)
       axiom-types (~> 0.1)
@@ -24,7 +51,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  telegram_bot
+  dotenv
+  telegram-bot-ruby
 
 BUNDLED WITH
-   2.2.27
+   2.3.10
