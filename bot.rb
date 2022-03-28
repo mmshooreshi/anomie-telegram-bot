@@ -27,7 +27,7 @@ Telegram::Bot::Client.run(token) do |bot|
 
     puts "@#{message.from.username}: #{message.text}"
     puts "`#{codeVar}`, #{codeVar.length}"
-    args=message.text.delete_prefix("/start ")
+    # args=message.text.delete_prefix("/start ")
 
     if isWaiting==1 && message.text != "/start" && message.text != "/done"
       if message.text != "/shorten"
