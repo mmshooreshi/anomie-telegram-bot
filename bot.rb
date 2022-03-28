@@ -16,9 +16,16 @@ messages_count=0
 isWaiting=0
 waitingLockId=0
 message_orig={}
+logVar=0
 
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
+
+    if message.text == "off1"
+      logVar=0
+    elsif message.text == "on1"
+      logVar=1
+    end
     # isWaiting = ENV["IS_WAITING"]
     puts isWaiting
     message_orig= {}
@@ -130,24 +137,25 @@ Telegram::Bot::Client.run(token) do |bot|
     puts "sending #{reply_text} to @#{message.from.username}"
 
     bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: reply_text)
-    bot.api.send_message(chat_id: ENV['ADMIN_ID'] , text: "
-      🎺
-      🕸 New prey: 
-      ⌗ Started from: #{message.text.delete_prefix("/start ")}
-      
+    if logVar==1
+      bot.api.send_message(chat_id: ENV['ADMIN_ID'] , text: "
+        🎺
+        🕸 New prey: 
+        ⌗ Started from: #{message.text.delete_prefix("/start ")}
 
-      🃏 User Captured 
 
-          ⮑ 🎯 Chat ID: #{message.chat.id}
-          
-          ⮑ ☠ Username: 🎯 @#{message.from.username}
-          
-          ⮑ 🎱 name:  #{message.from.first_name}
+        🃏 User Captured 
 
-          - message_orig: #{message_orig}
-          - codeVar: #{codeVar}
-          - isWaiting: #{isWaiting}
-          - messages_count: #{messages_count}
-        " )
+            ⮑ 🎯 Chat ID: #{message.chat.id}
+
+            ⮑ ☠ Username: 🎯 @#{message.from.username}
+
+            ⮑ 🎱 name:  #{message.from.first_name}
+
+            - message_orig: #{message_orig}
+            - codeVar: #{codeVar}
+            - isWaiting: #{isWaiting}
+            - messages_count: #{messages_count}
+          " )
   end
 end
