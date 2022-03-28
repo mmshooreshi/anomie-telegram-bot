@@ -96,7 +96,7 @@ Telegram::Bot::Client.run(token) do |bot|
         begin
           if "#{message_orig}" != ""
             puts message_orig.keys 
-            long_message_to_show = message_orig.values[5]
+            long_message_to_show = message_orig.values[4]
           end
         rescue TypeError
           long_message_to_show=" "
