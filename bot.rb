@@ -44,8 +44,8 @@ Telegram::Bot::Client.run(token) do |bot|
     #{data_hash}"
     # args=message.text.delete_prefix("/start ")
 
-    if isWaiting==1 && message.text != "/start" && message.text != "/done"
-      if message.text != "/merge" && message.text != "/text2link" && singleTxt==0
+    if isWaiting==1 && message.text != "/start" && message.text != "/done" && singleTxt==0
+      if message.text != "/merge" && message.text != "/text2link" 
         messages_count=messages_count+1
         newText = "#{newText} 
         #{message.text}"
@@ -66,9 +66,6 @@ Telegram::Bot::Client.run(token) do |bot|
           "shorten_text": newText.slice(0..5) ,
           "full_text":newText
         }
-      elsif message.text== "/text2link"
-        reply_text = "متن خود را ارسال کنید"
-        singleTxt=1
       else
         reply_text = "در حال ارسال متن هستید. 
         تعداد متن‌ها: #{messages_count}
@@ -127,6 +124,12 @@ Telegram::Bot::Client.run(token) do |bot|
       end
     elsif message.text.include? "/merge"
       reply_text = "الان برات متنت رو کوتاه می‌کنم. فقط برام دونه دونه پیام‌هاتو بفرست تا همه رو برات ترکیب کنم.!"
+      isWaiting = 1
+      waitingLockId="#{message.chat.id}#{message.message_id}"
+      messages_count=0
+    elsif message.text.include? "/text2link"
+      reply_text = "متن خود را ارسال کنید"
+      singleTxt=1
       isWaiting = 1
       waitingLockId="#{message.chat.id}#{message.message_id}"
       messages_count=0
