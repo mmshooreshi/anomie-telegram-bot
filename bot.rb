@@ -37,7 +37,7 @@ Telegram::Bot::Client.run(token) do |bot|
     # args=message.text.delete_prefix("/start ")
 
     if isWaiting==1 && message.text != "/start" && message.text != "/done"
-      if message.text != "/shorten"
+      if message.text != "/merge"
         messages_count=messages_count+1
         newText = "#{newText} 
         #{message.text}"
@@ -114,7 +114,7 @@ Telegram::Bot::Client.run(token) do |bot|
         reply_text = " #{message.text.delete_prefix("/start ")} 
         متاسفانه این پیام رو پیدا نکردم :(" 
       end
-    elsif message.text.include? "/shorten"
+    elsif message.text.include? "/merge"
       reply_text = "الان برات متنت رو کوتاه می‌کنم. فقط برام دونه دونه پیام‌هاتو بفرست تا همه رو برات ترکیب کنم.!"
       isWaiting = 1
       waitingLockId="#{message.chat.id}#{message.message_id}"
