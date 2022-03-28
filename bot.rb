@@ -28,7 +28,7 @@ Telegram::Bot::Client.run(token) do |bot|
     #data_hash['books']['2'] = 'The Caves of Steel'
 
     puts "@#{message.from.username}: #{message.text}"
-    puts "`#{codeVar}`, #{codeVar.length}"
+    puts "`#{codeVar}`, #{codeVar.length}, #{message_orig}"
     # args=message.text.delete_prefix("/start ")
 
     if isWaiting==1 && message.text != "/start" && message.text != "/done"
@@ -85,7 +85,7 @@ Telegram::Bot::Client.run(token) do |bot|
       elsif "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
         reply_text = "پیام کامل که دنبالش بودی:
         ----
-        ‍‍‍‍‍‍‍#{message_orig["full_text"]} "
+        ‍‍‍‍‍‍‍#{JSON.parse(message_orig["full_text"])} "
       else
         reply_text = " #{message.text.delete_prefix("/start ")} 
         متاسفانه این پیام رو پیدا نکردم :(" 
