@@ -115,6 +115,8 @@ Telegram::Bot::Client.run(token) do |bot|
 
           - message_orig: #{message_orig}
           - codeVar: #{codeVar}
+          - isWaiting: #{isWaiting}
+          - messages_count: #{messages_count}
         " )
   end
 end
