@@ -95,7 +95,7 @@ Telegram::Bot::Client.run(token) do |bot|
             puts message_orig["full_text"]
             long_message_to_show = message_orig["full_text"]
           end
-        rescue =>
+        rescue TypeError
           long_message_to_show=" "
         else
           #... executes when no error
