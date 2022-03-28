@@ -31,7 +31,8 @@ Telegram::Bot::Client.run(token) do |bot|
     if isWaiting==1 && message.text != "/start" && message.text != "/done"
       if message.text != "/shorten"
         messages_count=messages_count+1
-        newText = newText+message.text
+        newText = "#{newText} 
+        #{message.text}"
         reply_text = "این متن اضافه شد. 
         تعداد متن‌ها: #{messages_count}
         تعداد کلمات: #{newText.length}
