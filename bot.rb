@@ -56,7 +56,7 @@ Telegram::Bot::Client.run(token) do |bot|
 
         [Code: #{waitingLockId}]
         "
-        codeVar_generated = "#{Digest::MD5.hexdigest("#{waitingLockId}")}"
+        codeVar_generated = "#{Digest::CRC32.hexdigest("#{waitingLockId}")}"
         
         data_hash["#{codeVar_generated}"] = {
           "code": codeVar_generated,
@@ -78,7 +78,7 @@ Telegram::Bot::Client.run(token) do |bot|
       reply_text = "متن نهایی ساخته شد.
       
       برای اشتراک این متن می‌توانید از این لینک استفاده نمایید:
-      https://t.me/taarnevesht_bot?start=#{Digest::MD5.hexdigest("#{waitingLockId}")}
+      https://t.me/taarnevesht_bot?start=#{Digest::CRC32.hexdigest("#{waitingLockId}")}
 
       تعداد متن‌ها: #{messages_count}
       تعداد کلمات: #{newText.length}
