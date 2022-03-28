@@ -52,7 +52,7 @@ Telegram::Bot::Client.run(token) do |bot|
         codeVar_generated = "#{Digest::MD5.hexdigest("#{waitingLockId}")}"
         
         data_hash["#{codeVar_generated}"] = {
-          "code": "#{codeVar_generated}",
+          "code": codeVar_generated,
           "chat_id": message.chat.id,
           "message_id": waitingLockId,
           "shorten_text": newText.slice(0..5) ,
