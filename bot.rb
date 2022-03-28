@@ -14,6 +14,7 @@ puts token
 newText=""
 messages_count=0
 isWaiting=0
+message_orig={}
 
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
