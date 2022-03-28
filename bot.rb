@@ -85,6 +85,7 @@ Telegram::Bot::Client.run(token) do |bot|
 
       File.write('./DATA.json', JSON.dump(data_hash))
       isWaiting=0
+      newText=""
       waitingLockId=0
 
     elsif message.text.include? "/start"
