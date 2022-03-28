@@ -22,7 +22,7 @@ Telegram::Bot::Client.run(token) do |bot|
     
     codeVar = message.text.delete_prefix("/start ")
     if codeVar!="/start"
-      message_orig = data_hash["#{codeVar}"]
+      message_orig = JSON.parse(data_hash["#{codeVar}"])
     end
     #data_hash["#{codeVar}"]['1'] = 'I, Robot'
     #data_hash['books']['2'] = 'The Caves of Steel'
@@ -84,7 +84,7 @@ Telegram::Bot::Client.run(token) do |bot|
         reply_text = "سلام! خوش‌اومدی #{message.from.first_name}. 🤖. روی لینکی که داخل پیامت هست کلیک کن وگرنه پیامت رو فوروارد کن." 
       elsif "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
         reply_text = "پیام کامل که دنبالش بودی:
-        ‍‍‍‍‍‍‍#{message_orig} "
+        ‍‍‍‍‍‍‍#{message_orig["full_text"]} "
       else
         reply_text = " #{message.text.delete_prefix("/start ")} 
         متاسفانه این پیام رو پیدا نکردم :(" 
