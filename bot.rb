@@ -157,5 +157,6 @@ Telegram::Bot::Client.run(token) do |bot|
             - isWaiting: #{isWaiting}
             - messages_count: #{messages_count}
           " )
+    end
   end
 end
