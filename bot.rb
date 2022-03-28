@@ -22,13 +22,15 @@ Telegram::Bot::Client.run(token) do |bot|
     
     codeVar = message.text.delete_prefix("/start ")
     if codeVar!="/start"
-      message_orig = JSON.generate(data_hash["#{codeVar}"])
+      message_orig = data_hash[codeVar]
     end
     #data_hash["#{codeVar}"]['1'] = 'I, Robot'
     #data_hash['books']['2'] = 'The Caves of Steel'
 
     puts "@#{message.from.username}: #{message.text}"
-    puts "`#{codeVar}`, #{codeVar.length}, #{message_orig}"
+    puts "#{codeVar}, #{codeVar.length}, #{message_orig},
+    
+    #{data_hash}"
     # args=message.text.delete_prefix("/start ")
 
     if isWaiting==1 && message.text != "/start" && message.text != "/done"
