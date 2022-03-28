@@ -46,6 +46,8 @@ Telegram::Bot::Client.run(token) do |bot|
         تعداد کلمات: #{newText.length}
         ---
         در صورتی که متن دیگری برای ارسال ندارید، بر روی /done کلیک کنید.
+
+        [Code: #{waitingLockId}]
         "
         codeVar_generated = "#{Digest::MD5.hexdigest("#{waitingLockId}")}"
         
