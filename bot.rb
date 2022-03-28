@@ -24,7 +24,7 @@ Telegram::Bot::Client.run(token) do |bot|
 
     codeVar = message.text.delete_prefix("/start ")
     if codeVar!="/start"
-      message_orig = data_hash[codeVar]
+      message_orig = data_hash["#{codeVar}]
     end
     #data_hash["#{codeVar}"]['1'] = 'I, Robot'
     #data_hash['books']['2'] = 'The Caves of Steel'
@@ -90,8 +90,8 @@ Telegram::Bot::Client.run(token) do |bot|
         long_message_to_show=" "
         if message_orig != {}
           puts message_orig 
-          puts message_orig.full_text
-          long_message_to_show = message_orig.full_text
+          puts message_orig["full_text"]
+          long_message_to_show = message_orig["full_text"]
         end
         reply_text = "پیام کامل که دنبالش بودی:
         ----
