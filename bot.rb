@@ -88,7 +88,7 @@ Telegram::Bot::Client.run(token) do |bot|
       if message.text=="/start"
         reply_text = "سلام! خوش‌اومدی #{message.from.first_name}. 🤖. روی لینکی که داخل پیامت هست کلیک کن وگرنه پیامت رو فوروارد کن." 
       elsif "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
-        if ‍‍‍‍‍‍‍message_orig == {}
+        if message_orig == {}
           long_message_to_show =  ""
         elsif message_orig.key?(:"full_text")
           long_message_to_show =  ‍‍‍‍‍‍‍message_orig["full_text"]
