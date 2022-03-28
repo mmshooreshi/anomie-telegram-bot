@@ -23,6 +23,8 @@ Telegram::Bot::Client.run(token) do |bot|
     codeVar = message.text.delete_prefix("/start ")
     if codeVar!="/start"
       message_orig = data_hash[codeVar]
+    else
+      message_orig={}
     end
     #data_hash["#{codeVar}"]['1'] = 'I, Robot'
     #data_hash['books']['2'] = 'The Caves of Steel'
