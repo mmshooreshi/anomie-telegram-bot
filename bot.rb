@@ -14,6 +14,7 @@ puts token
 newText=""
 messages_count=0
 isWaiting=0
+waitingLockId=0
 message_orig={}
 
 Telegram::Bot::Client.run(token) do |bot|
@@ -46,12 +47,12 @@ Telegram::Bot::Client.run(token) do |bot|
         ---
         در صورتی که متن دیگری برای ارسال ندارید، بر روی /done کلیک کنید.
         "
-        codeVar_generated = "#{Digest::MD5.hexdigest("#{message.message_id}")}"
+        codeVar_generated = "#{Digest::MD5.hexdigest("#{waitingLockId}")}"
         
         data_hash["#{codeVar_generated}"] = {
           "code": "#{codeVar_generated}",
           "chat_id": message.chat.id,
-          "message_id": message.message_id,
+          "message_id": waitingLockId,
           "shorten_text": newText.slice(0..5) ,
           "full_text":newText
         }
@@ -68,7 +69,7 @@ Telegram::Bot::Client.run(token) do |bot|
       reply_text = "متن نهایی ساخته شد.
       
       برای اشتراک این متن می‌توانید از این لینک استفاده نمایید:
-      https://t.me/nextPage_Bchatbot?start=#{Digest::MD5.hexdigest("#{message.message_id}")}
+      https://t.me/nextPage_Bchatbot?start=#{Digest::MD5.hexdigest("#{waitingLockId}")}
 
       تعداد متن‌ها: #{messages_count}
       تعداد کلمات: #{newText.length}
@@ -82,6 +83,7 @@ Telegram::Bot::Client.run(token) do |bot|
 
       File.write('./DATA.json', JSON.dump(data_hash))
       isWaiting=0
+      waitingLockId=0
 
     elsif message.text.include? "/start"
       if message.text=="/start"
@@ -113,6 +115,7 @@ Telegram::Bot::Client.run(token) do |bot|
     elsif message.text.include? "/shorten"
       reply_text = "الان برات متنت رو کوتاه می‌کنم. فقط برام دونه دونه پیام‌هاتو بفرست تا همه رو برات ترکیب کنم.!"
       isWaiting = 1
+      waitingLockId="#{message.chat.id}#{message.message_id}"
       messages_count=0
     else 
       if message.text.length <15
