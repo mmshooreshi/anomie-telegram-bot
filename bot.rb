@@ -4,7 +4,7 @@ require 'json'
 file = File.read('./DATA.json')
 data_hash = JSON.parse(file)
 
-require 'digest'
+require 'digest/md5'
 
 require 'dotenv'
 Dotenv.load
@@ -56,7 +56,7 @@ Telegram::Bot::Client.run(token) do |bot|
 
         [Code: #{waitingLockId}]
         "
-        codeVar_generated = "#{Digest::CRC32.hexdigest("#{waitingLockId}")}"
+        codeVar_generated = "#{Digest::MD5.hexdigest("#{waitingLockId}")[0...8]}"
         
         data_hash["#{codeVar_generated}"] = {
           "code": codeVar_generated,
@@ -78,7 +78,7 @@ Telegram::Bot::Client.run(token) do |bot|
       reply_text = "متن نهایی ساخته شد.
       
       برای اشتراک این متن می‌توانید از این لینک استفاده نمایید:
-      https://t.me/taarnevesht_bot?start=#{Digest::CRC32.hexdigest("#{waitingLockId}")}
+      https://t.me/taarnevesht_bot?start=#{Digest::MD5.hexdigest("#{waitingLockId}")[0...8]}
 
       تعداد متن‌ها: #{messages_count}
       تعداد کلمات: #{newText.length}
