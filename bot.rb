@@ -96,8 +96,13 @@ Telegram::Bot::Client.run(token) do |bot|
             long_message_to_show = message_orig["full_text"]
           end
         rescue =>
-          #... error handler
+          long_message_to_show=" "
+        else
+          #... executes when no error
+        ensure
+          #... always executed
         end
+
         
         reply_text = "پیام کامل که دنبالش بودی:
         ----
