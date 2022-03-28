@@ -4,7 +4,7 @@ require 'json'
 file = File.read('./DATA.json')
 data_hash = JSON.parse(file)
 
-require 'digest/md5'
+require 'digest/crc32'
 
 require 'dotenv'
 Dotenv.load
