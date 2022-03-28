@@ -16,7 +16,7 @@ messages_count=0
 isWaiting=0
 waitingLockId=0
 message_orig={}
-logVar=0
+logVar=1
 
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
