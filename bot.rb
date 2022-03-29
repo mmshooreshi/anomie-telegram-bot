@@ -153,31 +153,34 @@ Telegram::Bot::Client.run(token) do |bot|
       bot.api.send_photo(chat_id: message.chat.id, photo: Faraday::UploadIO.new('', 'image/jpeg'))
       
     
-    elsif message.text.include? "/start"
-      if message.text=="/start"
-        reply_text = "سلام! خوش‌اومدی #{message.from.first_name}. 🤖. روی لینکی که داخل پیامت هست کلیک کن وگرنه پیامت رو فوروارد کن." 
-      elsif "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
-        long_message_to_show=" "
-        
-        begin
-          if "#{message_orig}" != ""
-            puts message_orig.keys 
-            long_message_to_show = message_orig.values[4]
-          end
-        rescue TypeError
+    elsif message.text
+      if message.text.include? "/start"
+        if message.text=="/start"
+          reply_text = "سلام! خوش‌اومدی #{message.from.first_name}. 🤖. روی لینکی که داخل پیامت هست  کلیک کن وگرنه پیامت رو فوروارد کن." 
+        elsif "#{message.text.delete_prefix("/start ")}" == "#{codeVar}"
           long_message_to_show=" "
-        else
+          
+          begin
+            if "#{message_orig}" != ""
+              puts message_orig.keys 
+              long_message_to_show = message_orig.values[4]
+            end
+          rescue TypeError
+            long_message_to_show=" "
+          else
           #... executes when no error
-        ensure
+          ensure
           #... always executed
+          end
+          post_manager = PostManager.new()
+          puts post_manager.create_post("foo", "bar", 1)
+
+          reply_text = "پیام کامل که دنبالش بودی:
+          ----
+          #{long_message_to_show}"
         end
 
-post_manager = PostManager.new()
-p post_manager.create_post("foo", "bar", 1)
-
-        reply_text = "پیام کامل که دنبالش بودی:
-        ----
-        #{long_message_to_show}"
+        
       else
         reply_text = " #{message.text.delete_prefix("/start ")} 
         متاسفانه این پیام رو پیدا نکردم :(" 
