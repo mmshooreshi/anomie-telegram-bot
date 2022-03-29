@@ -48,7 +48,7 @@ Telegram::Bot::Client.run(token) do |bot|
     puts isWaiting
     message_orig= {}
 
-    if message.text.length >2
+    if message.text
       codeVar = message.text.delete_prefix("/start ")
     end
     if codeVar!="/start"
