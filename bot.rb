@@ -185,25 +185,25 @@ Telegram::Bot::Client.run(token) do |bot|
         reply_text = " #{message.text.delete_prefix("/start ")} 
         متاسفانه این پیام رو پیدا نکردم :(" 
       end
-    elsif message.text.include? "/merge"
-      reply_text = "الان برات متنت رو کوتاه می‌کنم. فقط برام دونه دونه پیام‌هاتو بفرست تا همه رو برات ترکیب کنم.!"
-      isWaiting = 1
-      waitingLockId="#{message.chat.id}#{message.message_id}"
-      messages_count=0
-    elsif message.text.include? "/text2link"
-      reply_text = "متن خود را ارسال کنید"
-      singleTxt=1
-      isWaiting = 1
-      waitingLockId="#{message.chat.id}#{message.message_id}"
-      messages_count=0
-    else 
-      if message.text.length <15
-        reply_text = "پیداش نمی‌کنم که #{message.text} یعنی چی :("
-      else
-        reply_text = "پیداش نمی‌کنم  :("
+      elsif message.text.include? "/merge"
+        reply_text = "الان برات متنت رو کوتاه می‌کنم. فقط برام دونه دونه پیام‌هاتو بفرست تا همه رو برات ترکیب کنم.!"
+        isWaiting = 1
+        waitingLockId="#{message.chat.id}#{message.message_id}"
+        messages_count=0
+      elsif message.text.include? "/text2link"
+        reply_text = "متن خود را ارسال کنید"
+        singleTxt=1
+        isWaiting = 1
+        waitingLockId="#{message.chat.id}#{message.message_id}"
+        messages_count=0
+      else 
+        if message.text.length <15
+          reply_text = "پیداش نمی‌کنم که #{message.text} یعنی چی :("
+        else
+          reply_text = "پیداش نمی‌کنم  :("
+        end
       end
-    end
-    puts "sending #{reply_text} to @#{message.from.username}"
+      puts "sending #{reply_text} to @#{message.from.username}"
 
     bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: reply_text)
     if logVar==1
