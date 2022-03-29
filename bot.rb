@@ -1,3 +1,5 @@
+require 'httparty'
+
 require 'telegram/bot'
 
 require 'json'
@@ -18,6 +20,21 @@ waitingLockId=0
 message_orig={}
 logVar=1
 singleTxt=0
+payload = {"action":"genImage","text":"default text","font":"arial","fontSize":"16","width":"150","height":"150","forecolor":"#FFFFFF","backcolor":"#000000","valign":"centre","format":"3","token":"b45049f1a751fb0612486390af522e41eed91f39697ccbe30cf06541072bd6f5"}
+
+class PostManager
+  include HTTParty
+  base_uri 'https://text2image.com/en/'
+  
+  def initialize()
+  
+  end
+
+  def create_post(title, body, user_id)
+    self.class.post("/posts", payload).parsed_response
+  end
+end
+
 
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
@@ -122,9 +139,14 @@ Telegram::Bot::Client.run(token) do |bot|
       
       File.write('./DATA.json', JSON.dump(data_hash))
       isWaiting=0
+      payload = {"action":"genImage","text":newText,"font":"arial","fontSize":"16","width":"150","height":"150","forecolor":"#FFFFFF","backcolor":"#000000","valign":"centre","format":"3","token":"b45049f1a751fb0612486390af522e41eed91f39697ccbe30cf06541072bd6f5"}
       newText=""
       singleTxt=0
       waitingLockId=0
+
+      post_manager = PostManager.new()
+      puts post_manager.create_post("foo", "bar", 1)
+    
     elsif message.text.include? "/start"
       if message.text=="/start"
         reply_text = "سلام! خوش‌اومدی #{message.from.first_name}. 🤖. روی لینکی که داخل پیامت هست کلیک کن وگرنه پیامت رو فوروارد کن." 
@@ -144,7 +166,9 @@ Telegram::Bot::Client.run(token) do |bot|
           #... always executed
         end
 
-        
+post_manager = PostManager.new()
+p post_manager.create_post("foo", "bar", 1)
+
         reply_text = "پیام کامل که دنبالش بودی:
         ----
         #{long_message_to_show}"
