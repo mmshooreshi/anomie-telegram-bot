@@ -58,7 +58,7 @@ Telegram::Bot::Client.run(token) do |bot|
     #data_hash['books']['2'] = 'The Caves of Steel'
 
     puts "@#{message.from.username}: #{message.text}"
-    puts "#{codeVar}, #{codeVar.length}, #{message_orig},
+    puts "#{codeVar}, #{message_orig},
     
     #{data_hash}"
     # args=message.text.delete_prefix("/start ")
