@@ -31,7 +31,9 @@ Telegram::Bot::Client.run(token) do |bot|
     puts isWaiting
     message_orig= {}
 
-    codeVar = message.text.delete_prefix("/start ")
+    if message.text
+      codeVar = message.text.delete_prefix("/start ")
+    end
     if codeVar!="/start"
       message_orig = data_hash["#{codeVar}"]
     end
