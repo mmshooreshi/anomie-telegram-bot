@@ -31,7 +31,8 @@ class PostManager
   end
 
   def create_post(title, body, user_id)
-    self.class.post("/posts", payload).parsed_response
+    params = payload
+    self.class.post("/posts", params).parsed_response
   end
 end
 
