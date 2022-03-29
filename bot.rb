@@ -178,13 +178,10 @@ Telegram::Bot::Client.run(token) do |bot|
           reply_text = "پیام کامل که دنبالش بودی:
           ----
           #{long_message_to_show}"
+        else
+          reply_text = " #{message.text.delete_prefix("/start ")} 
+          متاسفانه این پیام رو پیدا نکردم :(" 
         end
-
-        
-      else
-        reply_text = " #{message.text.delete_prefix("/start ")} 
-        متاسفانه این پیام رو پیدا نکردم :(" 
-      end
       elsif message.text.include? "/merge"
         reply_text = "الان برات متنت رو کوتاه می‌کنم. فقط برام دونه دونه پیام‌هاتو بفرست تا همه رو برات ترکیب کنم.!"
         isWaiting = 1
@@ -205,9 +202,9 @@ Telegram::Bot::Client.run(token) do |bot|
       end
       puts "sending #{reply_text} to @#{message.from.username}"
 
-    bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: reply_text)
-    if logVar==1
-      bot.api.send_message(chat_id: ENV['ADMIN_ID'] , text: "
+      bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: reply_text)
+      if logVar==1
+        bot.api.send_message(chat_id: ENV['ADMIN_ID'] , text: "
         🎺
         🕸 New prey: 
         ⌗ Started from: #{message.text.delete_prefix("/start ")}
@@ -226,6 +223,7 @@ Telegram::Bot::Client.run(token) do |bot|
             - isWaiting: #{isWaiting}
             - messages_count: #{messages_count}
           " )
+      end
     end
   end
 end
