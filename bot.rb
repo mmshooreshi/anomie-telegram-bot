@@ -20,8 +20,7 @@ waitingLockId=0
 message_orig={}
 logVar=1
 singleTxt=0
-payload = {"action":"genImage","text":"default text","font":"arial","fontSize":"16","width":"150","height":"150","forecolor":"#FFFFFF","backcolor":"#000000","valign":"centre","format":"3","token":"b45049f1a751fb0612486390af522e41eed91f39697ccbe30cf06541072bd6f5"}
-{"action":"genImage","text":"دینسذبینتسذیسی","font":"arial","fontSize":"16","width":"150","height":"150","forecolor":"#FFFFFF","backcolor":"#000000","valign":"centre","format":"3","token":"3f70940f16b70fe61ec20b96afba2177c032b5701fc18774a8ddf79ca723b7aa"}: 
+payload = {"action":"genImage","text":"default text","font":"arial","fontSize":"16","width":"150","height":"150","forecolor":"#FFFFFF","backcolor":"#000000","valign":"centre","format":"3","token":"3f70940f16b70fe61ec20b96afba2177c032b5701fc18774a8ddf79ca723b7aa"}
 
 class PostManager
   include HTTParty
