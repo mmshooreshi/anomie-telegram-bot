@@ -1,4 +1,4 @@
 require 'sinatra'
 get '/' do
-  redirect 'http://t.me/nextPage_Bchatbot', 303
+  redirect 'http://t.me/anon_secure_bot', 303
 end
