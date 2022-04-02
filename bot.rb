@@ -43,12 +43,17 @@ def isTextMethod(message,bot)
     replyText_gen "done"
     puts "new code: #{$codeVar_generated}"
     if $toSecure==1 && $codeVar_generated
-      puts "let's update text as png #{$data_hash["#{$codeVar_generated}"].values[7]} "
-      $image_file = text2png_start("#{$data_hash["#{$codeVar_generated}"].values[7]}")
-      $image_file_url = "./Outputs/i#{$image_file}.jpeg"
-      # bot_sendPhoto(message,bot)
-      #puts $image_file  
-      photo_message($image_file,$image_file_url,bot,0)
+      getJson
+      begin
+        puts "let's update text as png #{$data_hash["#{$codeVar_generated}"].values[7]} "
+        $image_file = text2png_start("#{$data_hash["#{$codeVar_generated}"].values[7]}")
+        $image_file_url = "./Outputs/i#{$image_file}.jpeg"
+        # bot_sendPhoto(message,bot)
+        #puts $image_file  
+        photo_message($image_file,$image_file_url,bot,0)
+      rescue => e
+        puts e
+      end
     end
     sendJson JSON.dump($data_hash)
     resetVars 
