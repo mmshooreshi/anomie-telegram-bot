@@ -80,19 +80,22 @@ end
 
 
 def gen_msgObj (hashVar,isExport,is_secured,timer,txt2png)
-  
-  $data_hash["#{hashVar}"] = {
-    "code": "#{hashVar}",
-    "is_secured": "#{is_secured}", 
-    "timer": timer , 
-    "txt2png": "#{txt2png}",
-    "chat_id": $msg.chat.id,
-    "message_id": $waitingLockId,
-    "shorten_text": $newText.slice(0..5),
-    "full_text":$newText
-  }
-  if isExport=="export"
-    sendJson JSON.dump($data_hash)
+  begin
+    $data_hash["#{hashVar}"] = {
+      "code": "#{hashVar}",
+      "is_secured": "#{is_secured}", 
+      "timer": timer , 
+      "txt2png": "#{txt2png}",
+      "chat_id": $msg.chat.id,
+      "message_id": $waitingLockId,
+      "shorten_text": $newText.slice(0..5),
+      "full_text":$newText
+    }
+    if isExport=="export"
+      sendJson JSON.dump($data_hash)
+    end
+  rescue => e
+    puts e
   end
   
 end

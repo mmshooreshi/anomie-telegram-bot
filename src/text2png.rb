@@ -1,4 +1,4 @@
-require 'RMagick'
+require 'rmagick'
 require "bidi"
 require 'virastar'
 require_relative './persian-connector'
