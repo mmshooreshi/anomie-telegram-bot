@@ -1,4 +1,4 @@
-web: ruby web.rb -p $PORT
+web: ruby mu_app.rb -p $PORT
 worker: bundle exec ruby bot.rb
 
 
