@@ -11,6 +11,5 @@ gem 'virastar'
 gem 'arabic-letter-connector'
 gem 'rest-client'
 gem 'base64'
-gem 'stringio'
 gem 'faraday'
-gem 'async-await'
+

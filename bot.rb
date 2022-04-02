@@ -8,11 +8,11 @@ require 'uri'
 require 'json'
 require 'digest/md5'
 
-require_relative './json-interactions'
-require_relative './text2png'
-require_relative './functions'
-require_relative './init'
-require_relative './timing'
+require_relative './src/json-interactions'
+require_relative './src/text2png'
+require_relative './src/functions'
+require_relative './src/init'
+require_relative './src/timing'
 
 $codeVar_generated= "01234"
 Faraday.default_adapter = :net_http

@@ -1,0 +1,13 @@
+{
+    "1": {
+        "code": "1",
+        "chat_id": 10000000,
+        "message_id": 10000,
+        "is_secure": 0,
+        "timer": 30,
+        "txt2png": qwertyQWERTYasdfgASDFGasdfgG,
+        "shortened_text": "shortened message ...",
+        "full_text": "FULL MESSAGE TEXT FULL MESSAGE TEXT FULL MESSAGE TEXT FULL MESSAGE TEXT FULL MESSAGE TEXT FULL MESSAGE TEXT"
+    }
+
+}

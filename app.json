@@ -1,0 +1,6 @@
+{
+    "name": "Anomie telegram bot",
+    "description": "Create anonymous and protected messages in telegram. Turn them into unique \"t.me/...\" links & track anybody uses your link to see the messages.",
+    "repository": "https://github.com/mmshooreshi/anomie-telegram-bot",
+    "keywords": ["telegram", "bot", "secure_messages", "protected_content", "privacy_tools"]
+}
