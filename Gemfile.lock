@@ -2,13 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     arabic-letter-connector (0.1.1)
-    async (1.30.1)
-      console (~> 1.10)
-      nio4r (~> 2.3)
-      timers (~> 4.1)
-    async-await (0.6.0)
-      async
-      ruby2_keywords
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -17,8 +10,6 @@ GEM
     bidi (0.0.2)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
-    console (1.15.0)
-      fiber-local
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     domain_name (0.5.20190701)
@@ -48,7 +39,6 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
-    fiber-local (1.0.0)
     http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
@@ -68,7 +58,6 @@ GEM
       io-wait
       timeout
     netrc (0.11.0)
-    nio4r (2.5.8)
     rack (2.2.3)
     rack-protection (2.2.0)
       rack
@@ -84,7 +73,6 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.2.0)
       tilt (~> 2.0)
-    stringio (3.0.1)
     telegram-bot-ruby (0.18.0)
       dry-inflector
       faraday (~> 1.0)
@@ -92,7 +80,6 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     timeout (0.2.0)
-    timers (4.3.3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.1)
@@ -108,7 +95,6 @@ PLATFORMS
 
 DEPENDENCIES
   arabic-letter-connector
-  async-await
   base64
   bidi
   dotenv
@@ -118,7 +104,6 @@ DEPENDENCIES
   rest-client
   rmagick
   sinatra
-  stringio
   telegram-bot-ruby
   uri
   virastar
