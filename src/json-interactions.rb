@@ -23,6 +23,8 @@ def getJson
 
   file= $response.body
   $data_hash = JSON.parse(file)['record']
+
+  puts $data_hash.length
 end
 getJson
 
