@@ -1,8 +1,6 @@
 require 'rmagick'
-require "bidi"
 require 'virastar'
 require_relative './persian-connector'
-require_relative './resharper'
 
 include Magick
 $fontVar =["ANegaar.ttf",
@@ -85,8 +83,6 @@ end
 
 def text2png_arabic(textStringInput,font)
     $textString=textStringInput
-    bidi = Bidi.new
-    textBidi = bidi.to_visual $textString
 
     tmpC = Magick::ImageList.new
     tmpC.new_image(670, 888) do |c|
