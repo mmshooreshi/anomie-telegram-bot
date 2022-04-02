@@ -163,7 +163,7 @@ Telegram::Bot::Client.run($token) do |bot|
   bot.listen do |message|
     case message
     when  Telegram::Bot::Types::Message
-      #puts message.inspect
+      puts message
       if $STOP==0
         if message.text!="/stop"
           $msgChId = message.chat.id
