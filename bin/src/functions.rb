@@ -161,7 +161,7 @@ def findHash(res)
 
     $text2png_hash = $c['file_id']
 
-    puts "value: " , $data_hash["#{$codeVar_generated}"].values
+    #puts "value: " , $data_hash["#{$codeVar_generated}"].values
     $data_hash["#{$codeVar_generated}"][":text2png"]=$text2png_hash
     sendJson JSON.dump($data_hash)
   rescue => e

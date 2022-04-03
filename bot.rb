@@ -8,11 +8,11 @@ require 'uri'
 require 'json'
 require 'digest/md5'
 
-require_relative './src/json-interactions'
-require_relative './src/text2png'
-require_relative './src/functions'
-require_relative './src/init'
-require_relative './src/timing'
+require_relative './bin/src/json-interactions'
+require_relative './bin/src/text2png'
+require_relative './bin/src/functions'
+require_relative './bin/src/init'
+require_relative './bin/src/timing'
 
 $codeVar_generated= "01234"
 Faraday.default_adapter = :net_http
@@ -43,17 +43,20 @@ def isTextMethod(message,bot)
     replyText_gen "done"
     puts "new code: #{$codeVar_generated}"
     if $toSecure==1 && $codeVar_generated
-      getJson
-      begin
-        puts "let's update text as png #{$data_hash["#{$codeVar_generated}"].values[7]} "
+      #getJson
+      #begin
+        #puts $data_hash
+        #puts "#{$codeVar_generated}"
+        #puts "#{$data_hash["#{$codeVar_generated}"]}"
+        #puts "let's update text as png #{$data_hash["#{$codeVar_generated}"].values[7]} "
         $image_file = text2png_start("#{$data_hash["#{$codeVar_generated}"].values[7]}")
         $image_file_url = "./Outputs/i#{$image_file}.jpeg"
         # bot_sendPhoto(message,bot)
         #puts $image_file  
         photo_message($image_file,$image_file_url,bot,0)
-      rescue => e
-        puts e
-      end
+      #rescue => e
+        #puts e
+      #end
     end
     sendJson JSON.dump($data_hash)
     resetVars 
@@ -149,11 +152,13 @@ def isTextMethod(message,bot)
 
           ⮑ 🎱 name:  #{message.from.first_name}
 
-          - message_orig: #{$message_orig}
-          - codeVar: #{$codeVar}
-          - isWaiting: #{$isWaiting}
-          - messages_count: #{$messages_count}
+
         " ,protect_content: true)
+
+        # - message_orig: #{$message_orig}
+        # - codeVar: #{$codeVar}
+        # - isWaiting: #{$isWaiting}
+        # - messages_count: #{$messages_count}
   end
 end
 
@@ -167,10 +172,10 @@ Telegram::Bot::Client.run($token) do |bot|
       if $STOP==0
         if message.text!="/stop"
           $msgChId = message.chat.id
-          puts "message: #{message}"
+          #puts "message: #{message}"
           # if message.text !=
           if message.photo!=[]
-            puts "#{message.photo}"
+            #puts "#{message.photo}"
             puts "salam"
             $isText=0
             $isPhoto=1
