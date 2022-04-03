@@ -6,8 +6,9 @@ def time_qeue
   every_so_many_seconds(0.5) do
     puts Time.now
     iuy=iuy+1
-    if iuy>40
-      exit
+    if $time_check.length==0
+      #exit
+      $STOP=1
     end
      
     if iuy%5 ==0
