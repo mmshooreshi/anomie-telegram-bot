@@ -2,17 +2,11 @@ require 'date'
 
 def replyText_gen (typeVar)
   if typeVar=="done"
-<<<<<<< HEAD
-    $condom_protection = false
-    $reply_text = "#{$condom_protection}
-    
-    متن نهایی ساخته شد.
-=======
+    $isMD=1
     $reply_text = "متن نهایی ساخته شد.
->>>>>>> parent of a9cab77... condom
       
       برای اشتراک این متن می‌توانید از این لینک استفاده نمایید:
-      https://t.me/#{$bot_username}?start=#{Digest::MD5.hexdigest("#{$waitingLockId}")[0...8]}
+    ```https://t.me/#{$bot_username}?start=#{Digest::MD5.hexdigest("#{$waitingLockId}")[0...8]}```
 
       تعداد متن‌ها: #{$messages_count}
       تعداد حروف: #{$newText.length}
@@ -24,19 +18,13 @@ def replyText_gen (typeVar)
       
       "
   elsif typeVar=="single_text"
-<<<<<<< HEAD
-    $condom_protection = false
-    $reply_text = "#{$condom_protection}
-    
-    این متن اضافه شد و متن نهایی ساخته شد. 
-=======
+    $isMD=1
     $reply_text = "این متن اضافه شد و متن نهایی ساخته شد. 
->>>>>>> parent of a9cab77... condom
       تعداد حروف: #{$newText.length}
       ---
      
       برای اشتراک این متن می‌توانید از این لینک استفاده نمایید:
-      https://t.me/#{$bot_username}?start=#{Digest::MD5.hexdigest("#{$waitingLockId}")[0...8]}
+      ```https://t.me/#{$bot_username}?start=#{Digest::MD5.hexdigest("#{$waitingLockId}")[0...8]}```
 
       پیام نهایی:
 

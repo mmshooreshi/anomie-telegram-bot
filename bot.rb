@@ -130,18 +130,9 @@ def isTextMethod(message,bot)
   end
 
   if message.text 
-<<<<<<< HEAD
-    # $condom_protection = false
-    if $isMD==1
-      if  $condom_protection
-        bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: $reply_text,parse_mode: "MarkdownV2", protect_content: $condom_protection )
-      else
-        bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: $reply_text,parse_mode: "MarkdownV2" )
-      end
-=======
+    $condom_protection=true
     if $isMD==1
       bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: $reply_text,parse_mode: "MarkdownV2", protect_content: true )
->>>>>>> parent of a9cab77... condom
       $isMD=0
     else
       if $condom_protection
