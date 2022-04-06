@@ -138,7 +138,7 @@ def isTextMethod(message,bot)
       if $condom_protection
         bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: $reply_text,protect_content: $condom_protection )
       else 
-        bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: $reply_text )
+        bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: $reply_text,parse_mode: "MarkdownV2" )
       end
     end
   end
