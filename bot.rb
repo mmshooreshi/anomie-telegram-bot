@@ -132,13 +132,14 @@ def isTextMethod(message,bot)
   if message.text 
     # $condom_protection=true
     if $isMD==1 && !($condom_protection==true)
-      bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: "MARKDOWN1 #{$condom_protection} #{$reply_text}" ,parse_mode: "MarkdownV2", protect_content: true )
+      bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: "#{$reply_text}" ,parse_mode: "MarkdownV2", protect_content: true )
       $isMD=0
     else
       if $condom_protection == true
-        bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: "NO MARKDOWN  #{$condom_protection} #{$reply_text}",protect_content: $condom_protection )
+        bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: "#{$reply_text}",protect_content: $condom_protection )
       else 
-        bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: "MARKDOWN2 #{$condom_protection} #{$reply_text}" , parse_mode: "MarkdownV2" )
+        bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: " # کلیک کن تا کپی‌شه 
+           #{$reply_text}" , parse_mode: "MarkdownV2" )
       end
     end
   end
