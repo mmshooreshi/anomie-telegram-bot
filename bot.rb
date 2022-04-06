@@ -173,7 +173,6 @@ Telegram::Bot::Client.run($token) do |bot|
   $bot_is=bot
   puts "telegram bot started"
   bot.listen do |message|
-
       case message
       when  Telegram::Bot::Types::Message
         puts message
