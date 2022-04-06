@@ -2,7 +2,9 @@ require 'date'
 def replyText_gen (typeVar)
   if typeVar=="done"
     $condom_protection = false
-    $reply_text = "متن نهایی ساخته شد.
+    $reply_text = "#{$condom_protection}
+    
+    متن نهایی ساخته شد.
       
       برای اشتراک این متن می‌توانید از این لینک استفاده نمایید:
       https://t.me/#{$bot_username}?start=#{Digest::MD5.hexdigest("#{$waitingLockId}")[0...8]}
@@ -18,7 +20,9 @@ def replyText_gen (typeVar)
       "
   elsif typeVar=="single_text"
     $condom_protection = false
-    $reply_text = "این متن اضافه شد و متن نهایی ساخته شد. 
+    $reply_text = "#{$condom_protection}
+    
+    این متن اضافه شد و متن نهایی ساخته شد. 
       تعداد حروف: #{$newText.length}
       ---
      
