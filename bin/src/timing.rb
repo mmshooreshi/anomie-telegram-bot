@@ -25,10 +25,10 @@ def time_qeue
         $data_hash["#{x[0]}"]["timer"] = "0"
         sendJson JSON.dump($data_hash)
         $busy=2
-        res = $bot_is.api.deleteMessage(chat_id: $time_check["#{x[0]}"][:chat_id], message_id: $time_check["#{x[0]}"][:message_id])
+       
         $time_check.delete("#{x[0]}")
         $STOP=1
-
+        res = $bot_is.api.deleteMessage(chat_id: $time_check["#{x[0]}"][:chat_id], message_id: $time_check["#{x[0]}"][:message_id])
       end
       break if  $time_check["#{x[0]}"][:time_remaining].to_i<=0
 
