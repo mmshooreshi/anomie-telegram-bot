@@ -1,6 +1,7 @@
 require 'date'
 
 def replyText_gen (typeVar)
+  $condom_protection=true
   if typeVar=="done"
     $condom_protection=false
     $reply_text=" ` https://t.me/#{$bot_username}?start=#{Digest::MD5.hexdigest("#{$waitingLockId}")[0...8]} `"
