@@ -175,6 +175,7 @@ Telegram::Bot::Client.run($token) do |bot|
   bot.listen do |message|
     if !$STOP
       $STOP=0
+    end
     if $STOP==0
       case message
       when  Telegram::Bot::Types::Message
