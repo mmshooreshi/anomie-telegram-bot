@@ -1,5 +1,5 @@
 #just kiddin!!
-require 'telegramommit /bot'
+require 'telegram/bot'
 require 'openssl'
 require 'faraday'
 require 'faraday/net_http'
