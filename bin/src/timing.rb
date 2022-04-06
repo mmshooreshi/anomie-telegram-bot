@@ -34,7 +34,6 @@ def time_qeue
       puts "ina:", x[0],x[1],i,$time_check["#{x[0]}"][:time_remaining]
       puts "passed/remaining:", passed,remaining
       a="#{passed}s/#{remaining}s"
-      
       res = $bot_is.api.editMessageCaption(chat_id: $time_check["#{x[0]}"][:chat_id], message_id: $time_check["#{x[0]}"][:message_id], caption:loading(passed,remaining))
         
       rescue => e

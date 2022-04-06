@@ -173,14 +173,11 @@ Telegram::Bot::Client.run($token) do |bot|
   $bot_is=bot
   puts "telegram bot started"
   bot.listen do |message|
-    if !$STOP
-      $STOP=0
-    end
-    if $STOP==0
+
       case message
       when  Telegram::Bot::Types::Message
         puts message
-        if $STOP==0
+        if $STOP==1|| $STOP==2
           if message.text!="/stop"
             $msgChId = message.chat.id
             #puts "message: #{message}"
@@ -206,7 +203,6 @@ Telegram::Bot::Client.run($token) do |bot|
           end
         end
       end
-    end
   end
 end
 
