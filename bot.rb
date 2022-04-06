@@ -1,5 +1,5 @@
 #just kiddin!!
-require 'telegram/bot'
+require 'telegramommit /bot'
 require 'openssl'
 require 'faraday'
 require 'faraday/net_http'
@@ -130,8 +130,9 @@ def isTextMethod(message,bot)
   end
 
   if message.text 
+    
     if $isMD==1
-      bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: $reply_text,parse_mode: "MarkdownV2", protect_content: true )
+      bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: $reply_text,parse_mode: "MarkdownV2", protect_content: $condom_protection )
       $isMD=0
     else
       bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: $reply_text, protect_content: true )

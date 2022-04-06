@@ -1,7 +1,7 @@
 require 'date'
-
 def replyText_gen (typeVar)
   if typeVar=="done"
+    $condom_protection = false
     $reply_text = "متن نهایی ساخته شد.
       
       برای اشتراک این متن می‌توانید از این لینک استفاده نمایید:
@@ -17,6 +17,7 @@ def replyText_gen (typeVar)
       
       "
   elsif typeVar=="single_text"
+    $condom_protection = false
     $reply_text = "این متن اضافه شد و متن نهایی ساخته شد. 
       تعداد حروف: #{$newText.length}
       ---
@@ -31,8 +32,10 @@ def replyText_gen (typeVar)
       [Code: #{$waitingLockId}]
       "
   elsif typeVar=="start"
+    $condom_protection = 1
     $reply_text = "سلام! خوش‌اومدی #{$msg.from.first_name}. 🤖. روی لینکی که داخل پیامت هست کلیک کن وگرنه پیامت رو فوروارد کن." 
   elsif typeVar=="show_long_msg"
+    $condom_protection = 1
     if $long_message_to_show!=" "
       begin
         
@@ -64,13 +67,17 @@ def replyText_gen (typeVar)
       $reply_text = "نتونستم پیامی که دنبالشی رو پیدا کنم :("
     end
   elsif typeVar=="no_response"
+    $condom_protection = 1
     $reply_text = " #{$msg.text.delete_prefix("/start ")} 
     متاسفانه این پیام رو پیدا نکردم :(" 
   elsif typeVar=="merge"
+    $condom_protection = 1
     $reply_text = "الان برات متنت رو کوتاه می‌کنم. فقط برام دونه دونه پیام‌هاتو بفرست تا همه رو برات ترکیب کنم.!"
   elsif typeVar=="text2link"
+    $condom_protection = 1
     $reply_text = "متن خود را ارسال کنید"
   elsif typeVar=="links"
+    $condom_protection = 1
     $reply_text = "متن‌هایی که شما ایجاد کرده‌اید:
 
     #{$user_links_text}
