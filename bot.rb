@@ -173,32 +173,34 @@ Telegram::Bot::Client.run($token) do |bot|
   $bot_is=bot
   puts "telegram bot started"
   bot.listen do |message|
-    case message
-    when  Telegram::Bot::Types::Message
-      puts message
-      if $STOP==0
-        if message.text!="/stop"
-          $msgChId = message.chat.id
-          #puts "message: #{message}"
-          # if message.text !=
-          if message.photo!=[]
-            #puts "#{message.photo}"
-            puts "salam"
-            $isText=0
-            $isPhoto=1
-          end
-
-          $msg=message
-          checkLogStatus
-          
-            $isText=1
-            $codeVar = message.text
-            if $codeVar.length>6 && message.text.include?("/start")
-              $codeVar= $codeVar.delete_prefix("/start ")
-              $message_orig = $data_hash["#{$codeVar}"]
-              $showMsg=1
+    if $STOP==0
+      case message
+      when  Telegram::Bot::Types::Message
+        puts message
+        if $STOP==0
+          if message.text!="/stop"
+            $msgChId = message.chat.id
+            #puts "message: #{message}"
+            # if message.text !=
+            if message.photo!=[]
+              #puts "#{message.photo}"
+              puts "salam"
+              $isText=0
+              $isPhoto=1
             end
-            isTextMethod(message,bot)
+
+            $msg=message
+            checkLogStatus
+
+              $isText=1
+              $codeVar = message.text
+              if $codeVar.length>6 && message.text.include?("/start")
+                $codeVar= $codeVar.delete_prefix("/start ")
+                $message_orig = $data_hash["#{$codeVar}"]
+                $showMsg=1
+              end
+              isTextMethod(message,bot)
+          end
         end
       end
     end
