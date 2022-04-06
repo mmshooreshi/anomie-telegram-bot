@@ -22,8 +22,6 @@ def resetVars
     $fileid_toshow=""
     $isMD=0
     $codeVar_toshow=0
-    $condom_protection= true
-
 end
 resetVars
 
