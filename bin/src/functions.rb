@@ -35,10 +35,6 @@ def replyText_gen (typeVar)
   elsif typeVar=="show_long_msg"
     if $long_message_to_show!=" "
       begin
-        $reply_text = "پیام کامل که دنبالش بودی:
-        
-        ----
-        #{$long_message_to_show}"
         
         puts "time_check: #{$time_check}"
         puts $codeVar_toshow
@@ -55,6 +51,11 @@ def replyText_gen (typeVar)
             $time_check["#{$codeVar_toshow}"][:startedTime]=DateTime.now.to_time.to_i
             time_qeue()
           end
+        else
+          $reply_text = "پیام کامل که دنبالش بودی:
+        
+          ----
+          #{$long_message_to_show}"
         end
       rescue => e
         puts e
