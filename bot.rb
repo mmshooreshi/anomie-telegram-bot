@@ -175,8 +175,8 @@ Telegram::Bot::Client.run($token) do |bot|
   bot.listen do |message|
       case message
       when  Telegram::Bot::Types::Message
-        puts message
-        if $STOP==1|| $STOP==2
+        puts message , $busy
+        if $busy!=1
           if message.text!="/stop"
             $msgChId = message.chat.id
             #puts "message: #{message}"

@@ -22,7 +22,7 @@ def resetVars
     $fileid_toshow=""
     $isMD=0
     $codeVar_toshow=0
-    $STOP = 2
+    $busy=2
     # $condom_protection=true
 end
 resetVars
