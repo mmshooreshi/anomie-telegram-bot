@@ -97,11 +97,25 @@ def isTextMethod(message,bot)
       $data_hash.each{ |x|
         #puts "x: #{x[1]}"
         if x[1]['chat_id']==message.chat.id
+          
           $user_links.push(x[1]['full_text'])
-#          $user_links_text="#{$user_links_text} `#{x[1]['full_text']}` [مشاهده](https://t.me/#{$bot_username}?start=#{Digest::MD5.hexdigest(x[1]['code'])[0...8]})
 
-          $user_links_text="#{$user_links_text}
-          [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]})"
+            $user_links.push(x[1]['full_text'])
+          else 
+            $user_links.push("#{x[1]['full_text']}")
+          end
+
+#          $user_links_text="#{$user_links_text} `#{x[1]['full_text']}` [مشاهده](https://t.me/#{$bot_username}?start=#{Digest::MD5.hexdigest(x[1]['code'])[0...8]})
+          if x[1]['timer']!=0
+            $user_links_text="#{$user_links_text}
+            🤞🏻خوانده شده 
+            [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]})"
+          else
+            $user_links_text="#{$user_links_text}
+            🖤در انتظار  
+            [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]})"
+
+          end
           #puts $user_links_text
         end
       }
