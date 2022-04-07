@@ -97,15 +97,11 @@ def isTextMethod(message,bot)
       $data_hash.each{ |x|
         #puts "x: #{x[1]}"
         if x[1]['chat_id']==message.chat.id
-          $user_links.push("`#{x[1]['full_text']}`")
+          $user_links.push(x[1]['full_text'])
 #          $user_links_text="#{$user_links_text} `#{x[1]['full_text']}` [مشاهده](https://t.me/#{$bot_username}?start=#{Digest::MD5.hexdigest(x[1]['code'])[0...8]})
-          if x[1]['timer']!="0"
-            $user_links_text="#{$user_links_text} 
-            [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]})"
-          else
-            $user_links_text="#{$user_links_text}
-            [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]})"
-          end     
+
+          $user_links_text="``#{$user_links_text}
+          [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]})``"
           #puts $user_links_text
         end
       }
@@ -175,13 +171,13 @@ end
 
 Telegram::Bot::Client.run($token) do |bot|
   $bot_is=bot
-  puts "telegram bot started #{$STOP} #{$busy} "
+  puts "telegram bot started #{$STOP} #{$busy}"
   bot.listen do |message|
     
     case message
     when  Telegram::Bot::Types::Message
       puts message
-      if $STOP==0 && !message.text.include?("https://")  && $busy !=1
+      if $STOP==0 &&  !message.text.include?("https://")  && $busy !=1
         if message.text!="/stop"
           $msgChId = message.chat.id
           #puts "message: #{message}"

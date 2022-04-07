@@ -87,8 +87,8 @@ def replyText_gen (typeVar)
     $condom_protection=true
     $reply_text = "متن خود را ارسال کنید"
   elsif typeVar=="links"
-    $condom_protection=false
-    $isMD=1
+    #$condom_protection=false
+    #$isMD=1
     $reply_text = "متن‌هایی که شما ایجاد کرده‌اید:
 
     #{$user_links_text}
