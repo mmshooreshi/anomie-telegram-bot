@@ -103,10 +103,10 @@ def isTextMethod(message,bot)
 #          $user_links_text="#{$user_links_text} `#{x[1]['full_text']}` [مشاهده](https://t.me/#{$bot_username}?start=#{Digest::MD5.hexdigest(x[1]['code'])[0...8]})
           if x[1]['timer']!=0
             $user_links_text="#{$user_links_text} 
-            [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]}) | SEEN"
+            [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]}) \| SEEN"
           else
             $user_links_text="#{$user_links_text}
-            [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]}) | waiting..."
+            [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]}) \| waiting..."
           end
           #puts $user_links_text
         end
