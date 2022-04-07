@@ -104,15 +104,11 @@ def isTextMethod(message,bot)
           if x[1]['timer']!=0
             $user_links_text="#{$user_links_text} 
             
-            [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]}) 
-            
-            SEEN"
+            [seen #{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]})"
           else
             $user_links_text="#{$user_links_text}
             
-            [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]}) 
-            
-            waiting..."
+            [waiting #{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]})"
           end
           #puts $user_links_text
         end
