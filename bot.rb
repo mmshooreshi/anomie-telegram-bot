@@ -120,6 +120,7 @@ def isTextMethod(message,bot)
         end
       }
       $isMD=1
+      $condom_protection=false
       replyText_gen "links"
     else
       replyText_gen "no_response"
