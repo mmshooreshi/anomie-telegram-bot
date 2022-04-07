@@ -99,17 +99,14 @@ def isTextMethod(message,bot)
         if x[1]['chat_id']==message.chat.id
           $user_links.push("#{x[1]['full_text']} ")
 #          $user_links_text="#{$user_links_text} `#{x[1]['full_text']}` [مشاهده](https://t.me/#{$bot_username}?start=#{Digest::MD5.hexdigest(x[1]['code'])[0...8]})
-          if x[1]['timer']!=0
+          if x[1]['timer']!="0"
             $user_links_text="#{$user_links_text} 
-            
-            \\U00002728
             [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]})"
           else
             $user_links_text="#{$user_links_text}
-            
-            \\U0000274c	
             [#{x[1]['full_text'][0...50]}](https://t.me/#{$bot_username}?start=#{x[1]['code'][0...8]})"
-          end          
+          end     
+          puts $user_links_text
         end
       }
       $isMD=1
