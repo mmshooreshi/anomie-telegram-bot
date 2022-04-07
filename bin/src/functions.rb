@@ -47,10 +47,16 @@ def replyText_gen (typeVar)
         puts $codeVar_toshow
         puts "file to show: ", $time_check["#{$codeVar_toshow}"][:file_id]
         if $codeVar_toshow.length>0
-          if $time_check["#{$codeVar_toshow}"][:time_remaining].to_i <=0  
+          getJson
+          puts "annnnnnn
+          
+          
+          #{$data_hash["#{$codeVar_toshow}"]["timer"]}"
+          if $data_hash["#{$codeVar_toshow}"]["timer"]=="0"
             $reply_text="این پیام دیگه قابل نمایش نیست :(‌"
           else
             varTemp = photo_message("", $time_check["#{$codeVar_toshow}"][:file_id] ,$bot_is,1)
+            $reply_text =""
             puts "varTemp #{varTemp}"
             $time_check["#{$codeVar_toshow}"][:message_id]=varTemp[0]
             $time_check["#{$codeVar_toshow}"][:chat_id]=varTemp[1]
@@ -128,7 +134,7 @@ def waitingResponse
     "
     $codeVar_generated = "#{Digest::MD5.hexdigest("#{$waitingLockId}")[0...8]}"
     puts "ina: #{$codeVar_generated} "
-    gen_msgObj $codeVar_generated,"hold",$toSecure,30,0
+    gen_msgObj $codeVar_generated,"hold",$toSecure,10,0
   else
     $reply_text = "در حال ارسال متن هستید. ‍
     تعداد متن‌ها: #{$messages_count}

@@ -26,7 +26,7 @@ SITES = {
 }
 
 $time_check={file_id:0 , time_remaining: 0, message_id: 0, chat_id: 0, date: 0, startedTime: 0}
-
+$time_check={}
 def isTextMethod(message,bot)
   puts message.has_protected_content
 
@@ -66,7 +66,7 @@ def isTextMethod(message,bot)
     $newText = "#{message.text}"
     replyText_gen "single_text"
     $codeVar_generated = "#{Digest::MD5.hexdigest("#{$waitingLockId}")[0...8]}" 
-    gen_msgObj "#{$codeVar_generated}","export",$toSecure,30,$codeVar_generated   
+    gen_msgObj "#{$codeVar_generated}","export",$toSecure,10,$codeVar_generated   
     if $toSecure==1  
       $image_file = text2png_start("#{$data_hash["#{$codeVar_generated}"].values[7]}")
       $image_file_url = "./Outputs/i#{$image_file}.jpeg"
@@ -129,7 +129,7 @@ def isTextMethod(message,bot)
     end
   end
 
-  if message.text 
+  if message.text  && $reply_text !=""
     # $condom_protection=true
     if $isMD==1 && !($condom_protection==true)
       bot.api.send_message(chat_id: message.chat.id, reply_to_message_id: message.message_id, text: "#{$reply_text}" ,parse_mode: "MarkdownV2", protect_content: true )
@@ -171,37 +171,38 @@ end
 
 Telegram::Bot::Client.run($token) do |bot|
   $bot_is=bot
-  puts "telegram bot started"
+  puts "telegram bot started #{$STOP} #{$busy} "
   bot.listen do |message|
-      case message
-      when  Telegram::Bot::Types::Message
-        puts message , $busy
-        if $busy!=1
-          if message.text!="/stop"
-            $msgChId = message.chat.id
-            #puts "message: #{message}"
-            # if message.text !=
-            if message.photo!=[]
-              #puts "#{message.photo}"
-              puts "salam"
-              $isText=0
-              $isPhoto=1
-            end
-
-            $msg=message
-            checkLogStatus
-
-              $isText=1
-              $codeVar = message.text
-              if $codeVar.length>6 && message.text.include?("/start")
-                $codeVar= $codeVar.delete_prefix("/start ")
-                $message_orig = $data_hash["#{$codeVar}"]
-                $showMsg=1
-              end
-              isTextMethod(message,bot)
+    
+    case message
+    when  Telegram::Bot::Types::Message
+      puts message
+      if $STOP==0 && !message.text.include?("https://")  && $busy !=1
+        if message.text!="/stop"
+          $msgChId = message.chat.id
+          #puts "message: #{message}"
+          # if message.text !=
+          if message.photo!=[]
+            #puts "#{message.photo}"
+            puts "salam"
+            $isText=0
+            $isPhoto=1
           end
+
+          $msg=message
+          checkLogStatus
+          
+            $isText=1
+            $codeVar = message.text
+            if $codeVar.length>6 && message.text.include?("/start")
+              $codeVar= $codeVar.delete_prefix("/start ")
+              $message_orig = $data_hash["#{$codeVar}"]
+              $showMsg=1
+            end
+            isTextMethod(message,bot)
         end
       end
+    end
   end
 end
 
