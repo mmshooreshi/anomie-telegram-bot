@@ -30,7 +30,7 @@ $time_check={}
 def isTextMethod(message,bot)
   puts message.has_protected_content
 
-  if message.text.include?("secure")
+  if message.text.include?("secure") || message.text.include?("Secure")
     $toSecure=1
     if $codeVar_generated
       puts "codeVar_generated #{$codeVar_generated}"
